@@ -2,9 +2,9 @@ import { motion as Motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <main className="relative bg-gray-900 overflow-hidden flex items-center justify-center pt-60 pb-20">
+    <main className="relative bg-gray-900 overflow-hidden flex items-center justify-center pt-20 pb-20">
       <div className="relative z-10 flex flex-col items-center justify-center px-6">
-        <div className="w-full max-w-4xl text-center text-white">
+        {/* <div className="w-full max-w-4xl text-center text-white">
           <a
             href="#"
             aria-label="Join 100,000 plus active users"
@@ -29,7 +29,7 @@ const HeroSection = () => {
               />
             </svg>
           </a>
-        </div>
+        </div> */}
 
         <Motion.div
           initial={{ opacity: 0, y: -30 }}

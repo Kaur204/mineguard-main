@@ -1,26 +1,25 @@
 export default function GridPattern() {
   return (
-    <section className="bg-gray-900 py-20">
+    <section className="bg-gray-900 py-10">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8 pt-10">
         <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-          {/* 1️⃣ Mobile Friendly */}
+          {/* 1️⃣ AI-Powered Chatbot */}
           <div className="relative lg:row-span-2">
             <div className="absolute inset-px rounded-lg bg-gray-800 lg:rounded-l-4xl" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
                 <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Mobile friendly
+                  AI Regulatory Assistant
                 </p>
                 <p className="mt-2 max-w-lg text-sm text-gray-400 max-lg:text-center">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo.
+                  Get instant answers to mining regulations and compliance queries through our intelligent chatbot powered by advanced language models.
                 </p>
               </div>
               <div className="relative min-h-[30rem] w-full grow max-lg:mx-auto max-lg:max-w-sm">
                 <div className="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 outline outline-white/20">
                   <img
-                    alt="Mobile Friendly Preview"
-                    src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png"
+                    alt="AI Chatbot Interface"
+                    src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.1&auto=format&fit=crop&w=1000&q=80"
                     className="h-full w-full object-cover object-top"
                   />
                 </div>
@@ -29,23 +28,22 @@ export default function GridPattern() {
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-white/15 lg:rounded-l-4xl" />
           </div>
 
-          {/* 2️⃣ Performance */}
+          {/* 2️⃣ Real-time Incident Reporting */}
           <div className="relative max-lg:row-start-1">
             <div className="absolute inset-px rounded-lg bg-gray-800 max-lg:rounded-t-4xl" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
                 <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Performance
+                  Incident Reporting
                 </p>
                 <p className="mt-2 max-w-lg text-sm text-gray-400 max-lg:text-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
-                  maiores impedit.
+                  Report safety incidents, hazards, and near-misses in real-time with our streamlined digital reporting system.
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
                 <img
-                  alt="Performance Preview"
-                  src="https://tailwindcss.com/plus-assets/img/component-images/dark-bento-03-performance.png"
+                  alt="Incident Reporting Dashboard"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.1&auto=format&fit=crop&w=1000&q=80"
                   className="w-full max-lg:max-w-xs"
                 />
               </div>
@@ -53,23 +51,22 @@ export default function GridPattern() {
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-white/15 max-lg:rounded-t-4xl" />
           </div>
 
-          {/* 3️⃣ Security */}
+          {/* 3️⃣ 24/7 Availability */}
           <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
             <div className="absolute inset-px rounded-lg bg-gray-800" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
                 <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Security
+                  24/7 Availability
                 </p>
                 <p className="mt-2 max-w-lg text-sm text-gray-400 max-lg:text-center">
-                  Morbi viverra dui mi arcu sed. Tellus semper adipiscing
-                  suspendisse semper morbi.
+                  Access regulatory information and report incidents anytime, anywhere with our always-available platform.
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center max-lg:py-6 lg:pb-2">
                 <img
-                  alt="Security Preview"
-                  src="https://tailwindcss.com/plus-assets/img/component-images/dark-bento-03-security.png"
+                  alt="24/7 Availability"
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.1&auto=format&fit=crop&w=1000&q=80"
                   className="h-[min(152px,40cqw)] object-cover"
                 />
               </div>
@@ -77,17 +74,16 @@ export default function GridPattern() {
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-white/15" />
           </div>
 
-          {/* 4️⃣ Powerful APIs */}
+          {/* 4️⃣ Compliance Management */}
           <div className="relative lg:row-span-2">
             <div className="absolute inset-px rounded-lg bg-gray-800 max-lg:rounded-b-4xl lg:rounded-r-4xl" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
                 <p className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Powerful APIs
+                  Compliance Management
                 </p>
                 <p className="mt-2 max-w-lg text-sm text-gray-400 max-lg:text-center">
-                  Sit quis amet rutrum tellus ullamcorper ultricies libero dolor
-                  eget sem sodales gravida.
+                  Stay updated with the latest mining regulations and ensure full compliance with automated tracking and alerts.
                 </p>
               </div>
               <div className="relative min-h-[30rem] w-full grow">
@@ -95,15 +91,18 @@ export default function GridPattern() {
                   <div className="flex bg-gray-900 outline outline-white/5">
                     <div className="-mb-px flex text-sm font-medium text-gray-400">
                       <div className="border-r border-b border-r-white/10 border-b-white/20 bg-white/5 px-4 py-2 text-white">
-                        NotificationSetting.jsx
+                        ComplianceDashboard.jsx
                       </div>
                       <div className="border-r border-gray-600/10 px-4 py-2">
-                        App.jsx
+                        SafetyReports.jsx
                       </div>
                     </div>
                   </div>
                   <div className="px-6 pt-6 pb-14">
-                    {/* You can insert code example or syntax-highlighted block here */}
+                    <div className="text-green-400 text-sm font-mono">
+                      {/* Sample code for compliance tracking */}
+                      {`// Real-time compliance monitoring\nconst complianceStatus = {\n  regulations: "Up to date",\n  incidents: "0 pending",\n  safetyScore: "98%"\n};`}
+                    </div>
                   </div>
                 </div>
               </div>

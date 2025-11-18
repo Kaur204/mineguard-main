@@ -4,7 +4,7 @@ import Footer from "../../components/website/shared/Footer";
 import HeroSection from "../../components/website/home/HeroSection";
 import About from "../../components/website/home/About";
 import Contact from "../../components/website/home/Contact";
-import TeamPage from "../../components/website/home/Team";
+// import TeamPage from "../../components/website/home/Team";
 import GridPattern from "../../components/website/home/GridPattern";
 import Details from "../../components/website/home/Details";
 import { useState, useEffect } from "react";
@@ -34,7 +34,7 @@ const Home = () => {
           <section id="about"><About /></section>
           <section id="features"><GridPattern /></section>
           <section id="details"><Details /></section>
-          <section id="team"><TeamPage /></section>
+          {/* <section id="team"><TeamPage /></section> */}
           <section id="contact"><Contact /></section>
           <Footer />
         </main>
