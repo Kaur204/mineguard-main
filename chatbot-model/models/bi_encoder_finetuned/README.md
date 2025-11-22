@@ -9,45 +9,46 @@ tags:
 - loss:MultipleNegativesRankingLoss
 base_model: sentence-transformers/all-mpnet-base-v2
 widget:
-- source_sentence: What are the provisions for underground surveying?
+- source_sentence: What is the procedure for license termination?
   sentences:
-  - Mine inspectors are appointed to ensure compliance with safety regulations, inspect
-    mining operations, and investigate accidents.
-  - Accurate plans must be maintained showing workings, abandoned areas, water accumulations,
-    and updated regularly.
-  - No person below the age of eighteen years shall be employed in any mine.
-- source_sentence: What are the ventilation requirements for underground mines?
+  - Certain offenses can be compounded by payment of prescribed amounts with approval
+    of authorities.
+  - Licenses can be terminated for non-compliance, non-payment, or violation of conditions
+    after show cause notice and opportunity to respond.
+  - Mine closure requires approval, submission of closure plan, environmental rehabilitation,
+    and financial assurance for restoration work.
+- source_sentence: What is the District Mineral Foundation?
   sentences:
-  - Crèches must be provided for children of women workers with trained attendants
-    and proper facilities.
-  - Electrical installations must be certified, properly earthed, protected from water,
-    and maintained by qualified electricians.
-  - Adequate ventilation must be provided to ensure sufficient air circulation, dilute
-    and remove harmful gases, and maintain safe working conditions.
-- source_sentence: What is merchant mining?
-  sentences:
+  - Only certified shot-firers can conduct blasting, proper shelter must be taken,
+    warning must be given, and examination must follow each blast.
+  - Reconnaissance operation means preliminary prospecting of a mineral through regional,
+    aerial, geophysical or geochemical surveys.
   - District Mineral Foundation is established for the welfare of areas and persons
     affected by mining operations.
-  - Merchant mining is mining operations where extracted minerals are sold in the
-    open market.
-  - Adequate pumping arrangements must be maintained to prevent flooding, with monitoring
-    of old workings and water-bearing strata.
-- source_sentence: What is geological survey in mining?
+- source_sentence: What are the duties of a mine manager?
   sentences:
-  - Geological survey involves systematic examination to locate, map, and evaluate
-    mineral deposits.
-  - Transport systems including haulage, conveyors, and lifts must meet safety standards
-    and be regularly inspected.
+  - A composite license is granted for both reconnaissance and prospecting operations
+    in a specified area.
+  - A mine manager is responsible for the control, management, supervision and direction
+    of mining operations and ensuring compliance with safety regulations.
+  - Accurate weighment facilities must be provided, and records maintained for all
+    minerals dispatched.
+- source_sentence: What are the restrictions on granting mineral concessions?
+  sentences:
+  - Mineral concessions cannot be granted in prohibited areas, reserved forests without
+    clearance, and areas notified for conservation.
+  - A mining lease may be granted for a period not exceeding fifty years for minerals
+    other than coal, lignite and atomic minerals.
+  - After objections, competent authority issues final declaration vesting land in
+    government for mining purposes.
+- source_sentence: What are the provisions for mine rescue?
+  sentences:
+  - Mine workers are entitled to annual leave with wages, sick leave, and other statutory
+    leaves as prescribed.
+  - The Chief Inspector has overall supervisory powers, can issue regulations, investigate
+    major accidents, and ensure enforcement of mining laws.
   - Rescue stations must be established with trained rescue teams, equipment, and
     emergency response plans for accidents.
-- source_sentence: What is dead rent in mining context?
-  sentences:
-  - A mine is an excavation where any operation for the purpose of searching for or
-    obtaining minerals has been or is being carried on.
-  - Operating without a license can result in imprisonment and heavy fines, with possible
-    confiscation of minerals extracted.
-  - Dead rent is the minimum rent payable by the holder of a mining lease irrespective
-    of whether mining operations are carried out or not.
 pipeline_tag: sentence-similarity
 library_name: sentence-transformers
 metrics:
@@ -121,9 +122,9 @@ from sentence_transformers import SentenceTransformer
 model = SentenceTransformer("sentence_transformers_model_id")
 # Run inference
 sentences = [
-    'What is dead rent in mining context?',
-    'Dead rent is the minimum rent payable by the holder of a mining lease irrespective of whether mining operations are carried out or not.',
-    'A mine is an excavation where any operation for the purpose of searching for or obtaining minerals has been or is being carried on.',
+    'What are the provisions for mine rescue?',
+    'Rescue stations must be established with trained rescue teams, equipment, and emergency response plans for accidents.',
+    'Mine workers are entitled to annual leave with wages, sick leave, and other statutory leaves as prescribed.',
 ]
 embeddings = model.encode(sentences)
 print(embeddings.shape)
@@ -132,9 +133,9 @@ print(embeddings.shape)
 # Get the similarity scores for the embeddings
 similarities = model.similarity(embeddings, embeddings)
 print(similarities)
-# tensor([[1.0000, 0.8961, 0.3377],
-#         [0.8961, 1.0000, 0.2262],
-#         [0.3377, 0.2262, 1.0000]])
+# tensor([[1.0000, 0.6038, 0.2987],
+#         [0.6038, 1.0000, 0.1174],
+#         [0.2987, 0.1174, 1.0000]])
 ```
 
 <!--
@@ -201,11 +202,11 @@ You can finetune this model on your own dataset.
   | type    | string                                                                            | string                                                                             |
   | details | <ul><li>min: 7 tokens</li><li>mean: 10.85 tokens</li><li>max: 16 tokens</li></ul> | <ul><li>min: 17 tokens</li><li>mean: 22.31 tokens</li><li>max: 31 tokens</li></ul> |
 * Samples:
-  | sentence_0                                                       | sentence_1                                                                                                                                                   |
-  |:-----------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | <code>What is the procedure for obtaining a mining lease?</code> | <code>The procedure involves application to State Government, area notification, objection period, scrutiny, and grant through auction or allocation.</code> |
-  | <code>What are the blasting safety requirements?</code>          | <code>Blasting requires certified personnel, proper warning, evacuation, shelter, and post-blast examination before re-entry.</code>                         |
-  | <code>What are the fire prevention measures in mines?</code>     | <code>Measures include prohibiting smoking, fire-resistant materials, firefighting equipment, and regular fire drills.</code>                                |
+  | sentence_0                                                               | sentence_1                                                                                                                                                        |
+  |:-------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | <code>What are the health and safety provisions for mine workers?</code> | <code>Provisions include adequate ventilation, lighting, sanitation facilities, medical facilities, protective equipment, and regular health examinations.</code> |
+  | <code>What are the provisions for rest shelters?</code>                  | <code>Adequate rest shelters with seating and drinking water must be provided near working areas.</code>                                                          |
+  | <code>What are the reporting requirements for mine accidents?</code>     | <code>All serious accidents, deaths, and dangerous occurrences must be immediately reported to the inspector and investigated.</code>                             |
 * Loss: [<code>MultipleNegativesRankingLoss</code>](https://sbert.net/docs/package_reference/sentence_transformer/losses.html#multiplenegativesrankingloss) with these parameters:
   ```json
   {

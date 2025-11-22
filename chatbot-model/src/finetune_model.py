@@ -4,6 +4,7 @@ Separate script for fine-tuning on domain data
 """
 
 import json
+import random
 from pathlib import Path
 from sentence_transformers import SentenceTransformer, InputExample, losses
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
@@ -29,39 +30,59 @@ def load_qa_pairs(file_path):
 
 
 def prepare_training_data():
-    """Prepare training data for fine-tuning"""
+    """Prepare training data for fine-tuning with diverse evaluation examples"""
     
     data_dir = Path("data")
     train_file = data_dir / "train.jsonl"
-    test_file = data_dir / "test.jsonl"
     
     print("\nPreparing training data...")
     
-    # Load Q&A pairs
-    train_pairs = load_qa_pairs(train_file)
-    test_pairs = load_qa_pairs(test_file)
+    # Load all Q&A pairs from train.jsonl
+    all_pairs = load_qa_pairs(train_file)
     
-    # Create InputExample objects for training
+    # Shuffle data for random split
+    random.shuffle(all_pairs)
+    
+    # Split: 80% train, 20% eval
+    split_idx = int(len(all_pairs) * 0.8)
+    train_pairs = all_pairs[:split_idx]
+    eval_pairs = all_pairs[split_idx:]
+    
+    # Create training examples (no scores needed for training)
     train_examples = []
     for pair in train_pairs:
-        query = pair['query']
+        # Handle both 'query' and 'question' fields
+        query = pair.get('query') or pair.get('question')
         answer = pair['answer']
         # Use query-answer pairs for contrastive learning
         train_examples.append(
             InputExample(texts=[query, answer])
         )
     
-    # Create evaluation examples
+    # Create evaluation examples WITH VARIED SCORES (fixes NaN issue)
     eval_examples = []
-    for pair in test_pairs[:20]:  # Use subset for evaluation
-        query = pair['query']
+    half_point = len(eval_pairs) // 2
+    
+    for i, pair in enumerate(eval_pairs):
+        # Handle both 'query' and 'question' fields
+        query = pair.get('query') or pair.get('question')
         answer = pair['answer']
-        eval_examples.append(
-            InputExample(texts=[query, answer], label=1.0)
-        )
+        
+        if i < half_point:
+            # First half: Positive pairs (query with correct answer) → score 1.0
+            eval_examples.append(
+                InputExample(texts=[query, answer], label=1.0)
+            )
+        else:
+            # Second half: Negative pairs (query with wrong answer) → score 0.0
+            # Get wrong answer from next item
+            wrong_answer = eval_pairs[(i + 1) % len(eval_pairs)]['answer']
+            eval_examples.append(
+                InputExample(texts=[query, wrong_answer], label=0.0)
+            )
     
     print(f"✓ Training examples: {len(train_examples)}")
-    print(f"✓ Evaluation examples: {len(eval_examples)}")
+    print(f"✓ Evaluation examples: {len(eval_examples)} ({half_point} positive, {len(eval_examples) - half_point} negative)")
     
     return train_examples, eval_examples
 
