@@ -86,7 +86,7 @@ const Details = () => {
               <button 
                 onClick={() => {
                   // Navigate to reporting interface
-                  window.location.href = '../incidentReporting/Steps';
+                  window.location.href = '/incident-reporting';
                 }}
                 className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-medium shadow-md hover:shadow-green-500/20 hover:scale-105 transition-all duration-300"
               >

@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* Right side */}
           <div className="flex items-center">
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/portal/home")}
               className="text-sm font-semibold text-white hover:text-gray-300 focus:outline-none"
             >
               Report Incident <span aria-hidden="true">&rarr;</span>
