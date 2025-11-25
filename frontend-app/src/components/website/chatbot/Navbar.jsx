@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* Right side */}
           <div className="flex items-center">
             <button
-              onClick={() => navigate("/portal/home")}
+              onClick={() => navigate("/dashboard/chatbot")}
               className="text-sm font-semibold text-white hover:text-gray-300 focus:outline-none"
             >
               Try Chatbot <span aria-hidden="true">&rarr;</span>

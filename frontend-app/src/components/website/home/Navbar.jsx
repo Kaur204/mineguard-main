@@ -17,7 +17,6 @@ const navigation = [
       { name: "Incident Reporting", href: "/incident-reporting" },
     ],
   },
-  { name: "Developers", targetId: "team" },
   { name: "Contact", targetId: "contact" },
 ];
 

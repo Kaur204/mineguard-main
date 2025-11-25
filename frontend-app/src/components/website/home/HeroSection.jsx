@@ -4,33 +4,6 @@ const HeroSection = () => {
   return (
     <main className="relative bg-gray-900 overflow-hidden flex items-center justify-center pt-60 pb-20">
       <div className="relative z-10 flex flex-col items-center justify-center px-6">
-        <div className="w-full max-w-4xl text-center text-white">
-          <a
-            href="#"
-            aria-label="Join 100,000 plus active users"
-            className="inline-flex items-center gap-3 rounded-full bg-white/5 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/10 hover:bg-white/10 transition mb-8"
-          >
-            <span className="flex h-2 w-2 items-center justify-center">
-              <span className="block h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            <span>Join 100,000+ active users</span>
-            <svg
-              className="ml-2 h-4 w-4 text-white/70"
-              viewBox="0 0 20 20"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M7 5l5 5-5 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-        </div>
-
         <Motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +24,7 @@ const HeroSection = () => {
 
           <div className="flex items-center gap-4 mt-3">
             <Motion.a
-              href="#get-started"
+              href="/dashboard/chatbot"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -63,7 +36,7 @@ const HeroSection = () => {
             </Motion.a>
 
             <Motion.a
-              href="#self-host"
+              href="#"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}

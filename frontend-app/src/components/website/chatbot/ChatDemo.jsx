@@ -77,7 +77,7 @@ const ChatDemo = () => {
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
-                navigate("/login");
+                navigate("/dashboard/chatbot");
               }}
               className="bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-md transition"
             >
@@ -108,7 +108,7 @@ const ChatDemo = () => {
               eliminate toil, and deploy changes with ease.
             </p>
             <a
-              href="/login"
+              href="/dashboard/chatbot"
               class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
             >
               Try Chatbot
