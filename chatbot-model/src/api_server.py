@@ -236,6 +236,47 @@ async def ask_question(request: QueryRequest):
         )
     
     try:
+        # Check for conversational queries (greetings, small talk)
+        query_lower = request.query.lower().strip()
+        conversational_responses = {
+            "hi": "Hello! I'm the MineGuard chatbot, specialized in Indian mining and explosives laws. How can I help you today?",
+            "hello": "Hello! I'm here to help you with questions about Indian mining and explosives laws. What would you like to know?",
+            "hey": "Hey there! I can answer questions about mining regulations, explosives laws, and related legal matters. What can I help you with?",
+            "bye": "Goodbye! Feel free to return if you have any questions about mining or explosives laws.",
+            "goodbye": "Goodbye! Have a great day!",
+            "thanks": "You're welcome! If you have any more questions about mining or explosives laws, feel free to ask.",
+            "thank you": "You're welcome! Happy to help with mining law questions anytime.",
+            "how are you": "I'm functioning well, thank you! I'm here to assist you with Indian mining and explosives laws. What would you like to know?",
+            "what can you do": "I can answer questions about Indian mining laws, explosives regulations, licensing requirements, safety protocols, and related legal matters. Ask me anything!",
+            "who are you": "I'm MineGuard AI, a specialized chatbot trained on Indian mining and explosives laws. I can help you understand regulations, requirements, and legal provisions.",
+            "help": "I can help you with:\n• Mining regulations and laws\n• Explosives licensing and safety\n• Legal requirements and compliance\n• Specific sections and provisions\n\nJust ask your question!",
+        }
+        
+        # Check if query matches any conversational pattern
+        for pattern, response in conversational_responses.items():
+            if query_lower == pattern or query_lower.startswith(pattern + " ") or query_lower.endswith(" " + pattern):
+                return AnswerResponse(
+                    answer=response,
+                    source="Conversational Response",
+                    sources=[],
+                    validation={
+                        "is_valid": True,
+                        "issues": [],
+                        "word_count": len(response.split()),
+                        "char_count": len(response)
+                    },
+                    query=request.query,
+                    tokens_used={
+                        "prompt_tokens": 0,
+                        "completion_tokens": 0,
+                        "total_tokens": 0
+                    },
+                    retrieval_method="conversational",
+                    top_k=0,
+                    timestamp=datetime.now().isoformat()
+                )
+        
+        # If not conversational, proceed with RAG pipeline
         # Temporarily update chatbot settings for this request
         original_method = chatbot.retrieval_method
         original_top_k = chatbot.top_k
