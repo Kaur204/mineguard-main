@@ -3,7 +3,7 @@ import LoginForm from "../../../components/portal/auth/LoginForm";
 
 const LoginPage = () => {
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
       <LoginForm
         redirect="/portal/admin/dashboard"

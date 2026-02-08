@@ -6,21 +6,21 @@ const ChatDemo = () => {
   return (
     <>
       {/* Chat Demo Section */}
-      <section className="flex justify-center items-center bg-gray-900 py-20 px-4">
-        <div className="flex flex-col justify-between w-full max-w-4xl h-[65vh] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-300 dark:border-gray-700 overflow-hidden">
+      <section className="flex justify-center items-center bg-white py-20 px-4">
+        <div className="flex flex-col justify-between w-full max-w-4xl h-[65vh] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
           {/* Header */}
-          <header className="flex justify-between items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 border-b border-gray-300 dark:border-gray-600">
-            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-200 font-semibold">
-              <i className="fas fa-robot text-indigo-500"></i>
+          <header className="flex justify-between items-center px-5 py-3 bg-gray-50 border-b border-gray-200">
+            <div className="flex items-center gap-2 text-gray-900 font-semibold">
+              <i className="fas fa-robot text-purple-600"></i>
               <span>MineGuard Chatbot</span>
             </div>
-            <div className="text-gray-500 dark:text-gray-300 hover:text-gray-700 cursor-pointer transition">
+            <div className="text-gray-600 hover:text-gray-900 cursor-pointer transition">
               <i className="fas fa-cog"></i>
             </div>
           </header>
 
           {/* Chat area */}
-          <main className="flex-1 overflow-y-auto p-5 bg-[url('https://transparenttextures.com/patterns/cubes.png')] bg-repeat bg-opacity-10">
+          <main className="flex-1 overflow-y-auto p-5 bg-white">
             {/* Left message (Bot) */}
             <div className="flex items-end gap-3 mb-6">
               <div
@@ -29,14 +29,14 @@ const ChatDemo = () => {
                   backgroundImage: `url('https://cdn-icons-png.flaticon.com/512/4712/4712104.png')`,
                 }}
               />
-              <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 p-4 rounded-2xl rounded-bl-none max-w-md shadow-sm">
-                <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <div className="bg-gray-100 text-gray-900 p-4 rounded-2xl rounded-bl-none max-w-md shadow-sm border border-gray-200">
+                <div className="flex justify-between items-center text-xs text-gray-600 mb-1">
                   <span>BOT</span>
                   <span>12:45</span>
                 </div>
                 <p>
-                  Hi, I’m{" "}
-                  <span className="font-semibold text-indigo-500">
+                  Hi, I'm{" "}
+                  <span className="font-semibold text-purple-600">
                     MineGuard
                   </span>{" "}
                   👷‍♂️ — your safety assistant. How can I help you ensure
@@ -47,8 +47,8 @@ const ChatDemo = () => {
 
             {/* Right message (User) */}
             <div className="flex items-end gap-3 justify-end mb-4">
-              <div className="bg-indigo-600 text-white p-4 rounded-2xl rounded-br-none max-w-md shadow-sm">
-                <div className="flex justify-between items-center text-xs text-indigo-200 mb-1">
+              <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-4 rounded-2xl rounded-br-none max-w-md shadow-sm">
+                <div className="flex justify-between items-center text-xs text-purple-100 mb-1">
                   <span>Gaurav</span>
                   <span>12:46</span>
                 </div>
@@ -67,11 +67,11 @@ const ChatDemo = () => {
           </main>
 
           {/* Input area */}
-          <form className="flex items-center gap-3 p-4 bg-gray-100 dark:bg-gray-700 border-t border-gray-300 dark:border-gray-600">
+          <form className="flex items-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
             <input
               type="text"
               placeholder="Type your message..."
-              className="flex-1 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-100 px-4 py-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 transition"
+              className="flex-1 bg-white text-gray-900 px-4 py-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-gray-500 border border-gray-200 transition"
             />
             <button
               type="submit"
@@ -79,7 +79,7 @@ const ChatDemo = () => {
                 e.preventDefault();
                 navigate("/dashboard/chatbot");
               }}
-              className="bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-md transition"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-5 py-2.5 rounded-md transition"
             >
               Send
             </button>
@@ -88,40 +88,43 @@ const ChatDemo = () => {
       </section>
 
       {/* Description Section */}
-      <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-          <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+      <section className="bg-white">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <div className="max-w-screen-lg text-gray-600 sm:text-lg">
+            <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900">
               Powering innovation at{" "}
-              <span class="font-extrabold">200,000+</span> companies worldwide
+              <span className="font-extrabold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                200,000+
+              </span>{" "}
+              companies worldwide
             </h2>
-            <p class="mb-4 font-light">
+            <p className="mb-4 font-light">
               Track work across the enterprise through an open, collaborative
               platform. Link issues across Jira and ingest data from other
               software development tools, so your IT support and operations
               teams have richer contextual information to rapidly respond to
               requests, incidents, and changes.
             </p>
-            <p class="mb-4 font-medium">
+            <p className="mb-4 font-medium">
               Deliver great service experiences fast - without the complexity of
-              traditional ITSM solutions.Accelerate critical development work,
+              traditional ITSM solutions. Accelerate critical development work,
               eliminate toil, and deploy changes with ease.
             </p>
             <a
               href="/dashboard/chatbot"
-              class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
+              className="inline-flex items-center font-medium text-purple-600 hover:text-purple-700 transition"
             >
               Try Chatbot
               <svg
-                class="ml-1 w-6 h-6"
+                className="ml-1 w-6 h-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </a>

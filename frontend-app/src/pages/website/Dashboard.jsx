@@ -6,14 +6,14 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-gray-800 min-h-screen py-10 px-6">
+      <section className="bg-white min-h-screen py-10 px-6">
         <Motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl font-semibold text-white mb-6">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
             Welcome to Your Dashboard
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -11,7 +11,7 @@ const ImageUpload = ({ onImageUpload }) => {
 
   return (
     <div className="mb-4">
-      <label htmlFor="incidentImage" className="block text-sm font-semibold">
+      <label htmlFor="incidentImage" className="block text-sm font-semibold text-gray-900">
         Upload Image:
       </label>
       <input
@@ -19,7 +19,7 @@ const ImageUpload = ({ onImageUpload }) => {
         id="incidentImage"
         accept="image/*"
         onChange={handleImageChange}
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded bg-white text-gray-900 focus:ring-2 focus:ring-purple-500"
       />
       {image && (
         <div className="mt-2">

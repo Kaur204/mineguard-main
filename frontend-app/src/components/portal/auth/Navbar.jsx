@@ -1,7 +1,7 @@
 import logo from "../../../assets/logo.png";
 const Navbar = () => {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-white border-b border-gray-200">
       <header className="w-full z-50">
         <nav
           aria-label="Global"

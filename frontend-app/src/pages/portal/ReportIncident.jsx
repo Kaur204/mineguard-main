@@ -78,12 +78,12 @@ const IncidentReportPage = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-12 px-6">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white py-12 px-6">
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
+          className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-200"
         >
-          <h2 className="text-3xl font-semibold mb-6 text-center text-indigo-700">
+          <h2 className="text-3xl font-semibold mb-6 text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             Incident Reporting
           </h2>
 
@@ -104,14 +104,14 @@ const IncidentReportPage = () => {
           {/* Loading Spinner */}
           {loading && (
             <div className="flex justify-center mb-4">
-              <div className="w-8 h-8 border-4 border-t-4 border-indigo-600 border-solid rounded-full animate-spin"></div>
+              <div className="w-8 h-8 border-4 border-t-4 border-purple-600 border-solid rounded-full animate-spin"></div>
             </div>
           )}
 
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-700 transition duration-200 ${
+            className={`w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-3 rounded-md transition duration-200 ${
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={loading} // Disable the button when loading

@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
 
 const DashboardCard = ({ title, description, to }) => {
-  const cardContent = (
-    <div className="bg-gray-600 p-4 rounded-2xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer">
-      <h4 className="text-xl font-semibold text-white mb-2">{title}</h4>
-      <p className="text-white">{description}</p>
-    </div>
-  );
-  return to ? (
-    <Link to={to} tabIndex={0} style={{ textDecoration: "none" }}>
-      {cardContent}
+  return (
+    <Link to={to}>
+      <div className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-purple-300 transition-all p-6 cursor-pointer hover:bg-gray-50">
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+        <p className="text-gray-600">{description}</p>
+      </div>
     </Link>
-  ) : (
-    cardContent
   );
 };
 

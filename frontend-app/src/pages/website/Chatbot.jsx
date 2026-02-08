@@ -7,25 +7,26 @@ import ChatInput from "../../components/ChatAI/ChatInput";
 import ChatHeader from "../../components/ChatAI/ChatHeader";
 
 const ChatbotPage = () => {
-  const [chatHistory, setChatHistory] = useState(() => {
-    const saved = localStorage.getItem("chatHistory");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [chatHistory, setChatHistory] = useState([]);
   const [currentChatId, setCurrentChatId] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showHistory, setShowHistory] = useState(false);
+  const [showHistory, setShowHistory] = useState(true);
   const [chatToDelete, setChatToDelete] = useState(null);
   const messagesEndRef = useRef(null);
   const _navigate = useNavigate();
 
   useEffect(() => {
-    if (chatHistory.length === 0) {
+    const savedHistory = localStorage.getItem("chatHistory");
+    const initialHistory = savedHistory ? JSON.parse(savedHistory) : [];
+    
+    if (initialHistory.length === 0) {
       createNewChat();
     } else {
-      loadChat(chatHistory[0].id);
+      loadChat(initialHistory[0].id);
     }
+    setChatHistory(initialHistory);
   }, []);
 
   useEffect(() => {
@@ -49,23 +50,19 @@ const ChatbotPage = () => {
     setChatHistory((prev) => [newChat, ...prev]);
     setCurrentChatId(newChatId);
     setMessages([]);
-    setShowHistory(false);
-    saveChatHistory([newChat, ...chatHistory]);
   };
 
   const loadChat = (chatId) => {
     const savedMessages = localStorage.getItem(`chatMessages_${chatId}`);
     setCurrentChatId(chatId);
     setMessages(savedMessages ? JSON.parse(savedMessages) : []);
-    setShowHistory(false);
   };
 
   const deleteChat = (chatId) => {
     if (window.confirm("Are you sure you want to delete this chat?")) {
       const updatedHistory = chatHistory.filter((chat) => chat.id !== chatId);
       setChatHistory(updatedHistory);
-      saveChatHistory(updatedHistory);
-
+      localStorage.setItem("chatHistory", JSON.stringify(updatedHistory));
       localStorage.removeItem(`chatMessages_${chatId}`);
 
       if (chatId === currentChatId) {
@@ -79,8 +76,20 @@ const ChatbotPage = () => {
     setChatToDelete(null);
   };
 
-  const saveChatHistory = (history) => {
-    localStorage.setItem("chatHistory", JSON.stringify(history));
+  const typewriterEffect = async (fullText, messageIndex) => {
+    const delayPerCharacter = 30;
+    
+    for (let i = 0; i <= fullText.length; i++) {
+      await new Promise((resolve) => setTimeout(resolve, delayPerCharacter));
+      
+      setMessages((prev) => {
+        const updated = [...prev];
+        if (updated[messageIndex]) {
+          updated[messageIndex].text = fullText.substring(0, i);
+        }
+        return updated;
+      });
+    }
   };
 
   const handleSend = async (e) => {
@@ -88,14 +97,13 @@ const ChatbotPage = () => {
     if (!input.trim()) return;
 
     const userMessage = { text: input, isUser: true };
-    const updatedMessages = [...messages, userMessage];
-    setMessages(updatedMessages);
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
 
     try {
       const response = await axios.post(
-        "https://ptzzhq85-8000.inc1.devtunnels.ms/search",
+        "http://localhost:8000/ask",
         { query: input },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -114,7 +122,8 @@ const ChatbotPage = () => {
         aiResponse = response.data.result || response.data.answer;
       }
 
-      setMessages((prev) => [...prev, { text: aiResponse, isUser: false }]);
+      setMessages((prev) => [...prev, { text: "", isUser: false }]);
+      await typewriterEffect(aiResponse, messages.length + 1);
 
       if (messages.length === 0) {
         const newTitle =
@@ -123,43 +132,47 @@ const ChatbotPage = () => {
           chat.id === currentChatId ? { ...chat, title: newTitle } : chat
         );
         setChatHistory(updatedHistory);
-        saveChatHistory(updatedHistory);
+        localStorage.setItem("chatHistory", JSON.stringify(updatedHistory));
       }
     } catch (error) {
       console.error("API Error:", error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          text: "Sorry, I encountered an error. Please try again.",
-          isUser: false,
-        },
-      ]);
+      setMessages((prev) => [...prev, { text: "", isUser: false }]);
+      await typewriterEffect(
+        "Sorry, I encountered an error. Please try again.",
+        messages.length + 1
+      );
     } finally {
       setLoading(false);
     }
   };
 
-  
-const currentChat = chatHistory.find(chat => chat.id === currentChatId);
-const currentChatTitle = currentChat ? currentChat.title : "AI Chat Assistant";
+  const currentChat = chatHistory.find((chat) => chat.id === currentChatId);
+  const currentChatTitle = currentChat ? currentChat.title : "AI Chat Assistant";
 
   return (
-    <div className="min-h-screen bg-[#4e5561] flex">
-      <ChatHistorySidebar
-        chatHistory={chatHistory}
-        currentChatId={currentChatId}
-        showHistory={showHistory}
-        chatToDelete={chatToDelete}
-        onCreateNewChat={createNewChat}
-        onLoadChat={loadChat}
-        onSetChatToDelete={setChatToDelete}
-        onDeleteChat={deleteChat}
-      />
+    <div className="flex h-screen w-screen bg-white overflow-hidden">
+            {/* Sidebar - Always in layout, toggles width */}
+      <div className={`transition-all duration-300 border-r border-gray-200 ${showHistory ? "w-64" : "w-0"} overflow-hidden`}>
+        <ChatHistorySidebar
+          chatHistory={chatHistory}
+          currentChatId={currentChatId}
+          showHistory={showHistory}
+          chatToDelete={chatToDelete}
+          onCreateNewChat={createNewChat}
+          onLoadChat={loadChat}
+          onSetChatToDelete={setChatToDelete}
+          onDeleteChat={deleteChat}
+          onToggleHistory={() => setShowHistory(!showHistory)}
+        />
+      </div>
 
+      {/* Main Chat Area */}
       <div className="flex-1 flex flex-col">
         <ChatHeader 
           onToggleHistory={() => setShowHistory(!showHistory)} 
-          currentChatTitle={currentChatTitle} />
+          currentChatTitle={currentChatTitle} 
+          sidebarOpen={showHistory}
+        />
         
         <MessageList messages={messages} messagesEndRef={messagesEndRef} />
         

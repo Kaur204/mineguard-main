@@ -26,18 +26,18 @@ const SignupForm = ({ redirect, logIn }) => {
   };
 
   return (
-    <section className="flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4 pt-6">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-purple-500/10">
+    <section className="flex items-center justify-center bg-white px-4 pt-6">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-200 transition-all duration-300 hover:shadow-purple-500/10">
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
           Create Your{" "}
-          <span className="text-indigo-600 dark:text-indigo-400">
+          <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             MineGuard
           </span>{" "}
           Account
         </h2>
 
-        <p className="text-center text-gray-500 dark:text-gray-400 mb-8 text-sm">
+        <p className="text-center text-gray-600 mb-8 text-sm">
           Fill in your details or sign up with Google to continue.
         </p>
 
@@ -45,7 +45,7 @@ const SignupForm = ({ redirect, logIn }) => {
         <form onSubmit={handleSignup} className="space-y-6">
           {/* Full Name */}
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-gray-900 mb-2">
               Full Name
             </label>
             <input
@@ -55,13 +55,13 @@ const SignupForm = ({ redirect, logIn }) => {
               onChange={handleChange}
               required
               placeholder="John Doe"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-gray-500"
             />
           </div>
 
           {/* Username */}
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-gray-900 mb-2">
               Username
             </label>
             <input
@@ -71,13 +71,13 @@ const SignupForm = ({ redirect, logIn }) => {
               onChange={handleChange}
               required
               placeholder="johndoe"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-gray-500"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-gray-900 mb-2">
               Email Address
             </label>
             <input
@@ -87,13 +87,13 @@ const SignupForm = ({ redirect, logIn }) => {
               onChange={handleChange}
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-gray-500"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-gray-900 mb-2">
               Password
             </label>
             <input
@@ -103,32 +103,32 @@ const SignupForm = ({ redirect, logIn }) => {
               onChange={handleChange}
               required
               placeholder="********"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder:text-gray-500"
             />
           </div>
 
           {/* Signup Button */}
           <button
             type="submit"
-            className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition-all"
+            className="w-full py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-md transition-all"
           >
             Sign Up
           </button>
 
           {/* Divider */}
           <div className="flex items-center justify-center my-4">
-            <div className="border-t border-gray-300 dark:border-gray-600 flex-grow"></div>
-            <span className="mx-2 text-gray-500 dark:text-gray-400 text-sm">
+            <div className="border-t border-gray-300 flex-grow"></div>
+            <span className="mx-2 text-gray-500 text-sm">
               OR
             </span>
-            <div className="border-t border-gray-300 dark:border-gray-600 flex-grow"></div>
+            <div className="border-t border-gray-300 flex-grow"></div>
           </div>
 
           {/* Google Sign-in */}
           <button
             type="button"
             onClick={handleGoogleSignup}
-            className="w-full flex items-center justify-center gap-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
+            className="w-full flex items-center justify-center gap-3 py-2 border border-gray-300 rounded-md text-gray-900 bg-gray-50 hover:bg-gray-100 transition-all"
           >
             <img
               src="https://www.svgrepo.com/show/355037/google.svg"
@@ -140,11 +140,11 @@ const SignupForm = ({ redirect, logIn }) => {
         </form>
 
         {/* Footer */}
-        <p className="text-sm text-center text-gray-500 dark:text-gray-400 mt-6">
+        <p className="text-sm text-center text-gray-600 mt-6">
           Already have an account?{" "}
           <button
             onClick={() => navigate(logIn)}
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-purple-600 hover:text-purple-700 font-semibold"
           >
             Login here
           </button>

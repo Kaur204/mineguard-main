@@ -3,7 +3,7 @@ import React from "react";
 const IncidentForm = ({ description, setDescription }) => {
   return (
     <div className="mb-4">
-      <label htmlFor="incidentDescription" className="block text-sm font-semibold">
+      <label htmlFor="incidentDescription" className="block text-sm font-semibold text-gray-900">
         Incident Description:
       </label>
       <textarea
@@ -12,7 +12,7 @@ const IncidentForm = ({ description, setDescription }) => {
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Describe the incident"
         required
-        className="w-full p-3 border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="w-full p-3 border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white text-gray-900 placeholder:text-gray-500"
         rows="4"
       />
     </div>
